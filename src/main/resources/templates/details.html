@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/main.html" >
+<div layout:fragment="content">
+    <form action="/processing" method="post">
+        <div class="p-3">
+        <input class="w-50" type="hidden" name="id" th:value="${applicationid.getId()}">
+        <div class="mb-3 w-50">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" name="userName" th:value="${applicationid.getUserName()}">
+        </div>
+        <div class="mb-3 w-50">
+            <label  class="form-label">Course</label>
+            <input type="text" class="form-control" name="courseName" th:value="${applicationid.getCourseName()}">
+        </div>
+        <div class="mb-3 w-50">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control" name="phone"  th:value="${applicationid.getPhone()}"}>
+        </div>
+        <div class="mb-3 w-50">
+            <label class="form-label">Comment</label>
+            <input type="text" class="form-control" name="commentary" th:value="${applicationid.getCommentary()}">
+        </div>
+        <button th:if="${!applicationid.isHandled()}" type="submit" class="btn btn-primary">Обработать заявку</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteApplicationModal">Удалить</button>
+        </div>
+    </form>
+    <form action="/deleteApplication" method="post">
+        <div class="modal fade" id="deleteApplicationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ты уверен?</p>
+                        <input type="hidden" name="id" th:value="${applicationid.getId()}">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">да</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">нет</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+</html>

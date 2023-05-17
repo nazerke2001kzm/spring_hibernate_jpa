@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link th:insert="~{head}">
+    <title></title>
+</head>
+<body class="d-flex flex-column">
+<div th:insert="~{navbar}"></div>
+<div class="row">
+    <div class="col-14" layout:fragment="content"></div>
+</div>
+<!--
+ <div th:insert="~{footer}" class="mt-auto"></div>
+-->
+</body>
+</html>
